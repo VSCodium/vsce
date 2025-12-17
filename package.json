@@ -29,9 +29,9 @@
 		"compile": "tsc",
 		"api": "api-extractor run --local --verbose",
 		"build": "npm run compile && npm run api",
+		"prepublishOnly": "npm run build",
 		"release": "release-it --no-increment",
 		"test": "mocha",
-		"vscode:prepublish": "npm run build",
 		"watch:build": "npm run compile -- --watch",
 		"watch:test": "npm run test -- --watch"
 	},
