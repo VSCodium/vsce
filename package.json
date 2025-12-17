@@ -1,16 +1,14 @@
 {
-	"name": "@vscode/vsce",
-	"version": "0.0.0",
+	"name": "@vscodium/vsce",
+	"version": "3.6.1-258425",
 	"description": "VS Code Extensions Manager",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Microsoft/vsce"
+		"url": "https://github.com/vscodium/vsce"
 	},
 	"type": "commonjs",
-	"homepage": "https://code.visualstudio.com",
-	"bugs": "https://github.com/Microsoft/vsce/issues",
 	"keywords": [
-		"vscode",
+		"vscodium",
 		"vsce",
 		"extension"
 	],
@@ -31,8 +29,9 @@
 		"compile": "tsc",
 		"api": "api-extractor run --local --verbose",
 		"build": "npm run compile && npm run api",
-		"watch:build": "npm run compile -- --watch",
+		"release": "release-it --no-increment",
 		"test": "mocha",
+		"watch:build": "npm run compile -- --watch",
 		"watch:test": "npm run test -- --watch"
 	},
 	"engines": {
@@ -87,6 +86,7 @@
 		"@types/yauzl": "^2.9.2",
 		"@types/yazl": "^2.4.2",
 		"mocha": "^11.1.0",
+		"release-it": "^19.1.0",
 		"source-map-support": "^0.4.2",
 		"ts-node": "^10.9.1",
 		"typescript": "^4.3.2"
