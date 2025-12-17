@@ -27,7 +27,6 @@ import { detectYarn, getDependencies } from './npm';
 import * as GitHost from 'hosted-git-info';
 import parseSemver from 'parse-semver';
 import * as jsonc from 'jsonc-parser';
-import * as vsceSign from '@vscode/vsce-sign';
 import { getRuleNameFromRuleId, lintFiles, lintText, prettyPrintLintResult } from './secretLint';
 
 const MinimatchOptions: minimatch.IOptions = { dot: true };
@@ -1951,31 +1950,17 @@ export async function signPackage(packageFile: string, signTool: string): Promis
 }
 
 // Generate the signature manifest file
-export function generateManifest(packageFile: string, outputFile?: string): Promise<string> {
-	if (!outputFile) {
-		const packageFolder = path.dirname(packageFile);
-		const packageName = path.basename(packageFile, '.vsix');
-		outputFile = path.join(packageFolder, `${packageName}.manifest`);
-	}
-	return vsceSign.generateManifest(packageFile, outputFile);
+export function generateManifest(_packageFile: string, _outputFile?: string): Promise<string> {
+	throw new Error('Not Supported');
 }
 
-export async function verifySignature(packageFile: string, manifestFile: string, signatureFile: string): Promise<void> {
-	const sigzipPath = await createSignatureArchive(manifestFile, signatureFile);
-	try {
-		const result = await vsceSign.verify(packageFile, sigzipPath, true);
-		console.log(`Signature verification result: ${result.code}`);
-		if (result.output) {
-			console.log(result.output)
-		}
-	} finally {
-		await fs.promises.unlink(sigzipPath);
-	}
+export async function verifySignature(_packageFile: string, _manifestFile: string, _signatureFile: string): Promise<void> {
+	throw new Error('Not Supported');
 }
 
 // Create a signature zip file containing the manifest and signature file
-export async function createSignatureArchive(manifestFile: string, signatureFile: string, outputFile?: string): Promise<string> {
-	return vsceSign.zip(manifestFile, signatureFile, outputFile)
+export async function createSignatureArchive(_manifestFile: string, _signatureFile: string, _outputFile?: string): Promise<string> {
+	throw new Error('Not Supported');
 }
 
 export async function packageCommand(options: IPackageOptions = {}): Promise<any> {
