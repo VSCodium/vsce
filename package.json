@@ -1,6 +1,6 @@
 {
 	"name": "@vscodium/vsce",
-	"version": "3.6.1-258427",
+	"version": "3.6.1-258428",
 	"description": "VS Code Extensions Manager",
 	"repository": {
 		"type": "git",
